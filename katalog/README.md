@@ -3,6 +3,9 @@ Muhammad Faris Umar Rahman
 
 2106702402
 
+Link app:
+https://tugas2pbpfaris.herokuapp.com/katalog/
+
 **- Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html;**
 
 Bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan penjelasan keterkaitan antar berkas:

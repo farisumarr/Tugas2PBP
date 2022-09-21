@@ -1,7 +1,16 @@
  # Tugas 3 PBP
  
- Muhammad Faris Umar Rahman
+ Muhammad Faris Umar Rahman - 
  2106702402
+ 
+**Link tautan ke aplikasi heroku:**
+ 
+ https://tugas2pbpfaris.herokuapp.com/mywatchlist/html/
+ 
+ https://tugas2pbpfaris.herokuapp.com/mywatchlist/json/
+ 
+ https://tugas2pbpfaris.herokuapp.com/mywatchlist/xml/
+ 
  
  
 **Jelaskan perbedaan antara JSON, XML, dan HTML!**

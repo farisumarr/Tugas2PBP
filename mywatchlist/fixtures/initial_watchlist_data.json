@@ -1,0 +1,113 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "yes",
+            "title": "Mencuri Raden Saleh",
+            "rating": "5",
+            "release_date": "2022",
+            "review": "So far this  the best indonesian movie in 2022, this movie is lit and unexpected. All the actors played very well, there were no cringe scenes and the plot was really really cool. There are many plot twists, being tense, sad, laughing all those feelings got mixed up while watching this movie."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "yes",
+            "title": "Doctor Strange in the Multiverse of Madness",
+            "rating": "5",
+            "release_date": "2022",
+            "review": "Doctor Strange in the Multiverse of Madness delivers all the action and visual excitement you want in a Marvel movie while taking the franchise in a much darker direction"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "yes",
+            "title": "The Greatest Showman",
+            "rating": "5",
+            "release_date": "2017",
+            "review": "The director, Michael Gracey, delivers quick doses of excitement in splashy scenes but has little feel for the choreographic action, offers scant historical substance, and displays slender dramatic insight."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "yes",
+            "title": "Aladdin",
+            "rating": "5",
+            "release_date": "2019",
+            "review": "Everything about Aladdin is big, and yet feels small at the same time. Its lavish production design and costuming also has the effect of looking more like a stage production than an epic movie"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "yes",
+            "title": "Incantation",
+            "rating": "4",
+            "release_date": "2022",
+            "review": "When Incantation focused on building an atmosphere of dread and tension, it was extremely effective, and these moments aren't sparse, but, ultimately it suffers from a disjointed narrative and questionable 'found footage' - the ending, however, is great."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "yes",
+            "title": "Spider-Man: No Way Home",
+            "rating": "4",
+            "release_date": "2021",
+            "review": "Throughout all of it, the weird and complex history of Spider-Man as a cinematic icon isn't a hindrance to the story; instead, it's an enhancement, using the quirks of the character's legacy as a source of illumination into why he has endured so long."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "yes",
+            "title": "Avengers: Endgame",
+            "rating": "5",
+            "release_date": "2019",
+            "review": " From the very beginning “Avengers: Endgame” feels like something special, something unique, something unlike anything weve seen before. And even in its missteps it never loses that sense of spectacle and grandeur."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "yes",
+            "title": "Toy Story 4",
+            "rating": "5",
+            "release_date": "2019",
+            "review": "Pixar by the numbers, this third and largely unnecessary sequel to Toy Story delivers everything you'd expect from the animation studio, minus the warmth, wit, and dread."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "yes",
+            "title": "Incredibles 2",
+            "rating": "5",
+            "release_date": "2018",
+            "review": "Incredibles 2 delivers on as much adventure, joy, hilarity, and empathy as its prequel, and all while keeping it centred on its examination of contemporary family life."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "yes",
+            "title": "Inside Out",
+            "rating": "5",
+            "release_date": "2015",
+            "review": "Inside Out beautifully transforms emotional conflict into an adventure, a surreal look at the internal machinations that encompass why we feel the way we do."
+        }
+    }
+    
+]

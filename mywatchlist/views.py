@@ -6,12 +6,27 @@ from django.core import serializers
 
 def show_watchlist(request):
     data_watchlist = MyWatchList.objects.all()
+
+    watched = 0
+    unwatched = 0
+
+    for i in data_watchlist:
+        if i.watched=="yes":
+            watched+=1
+        elif i.watched=="no":
+            unwatched+=1
+
     context = {
         'nama': 'Muhammad Faris Umar Rahman',
         'npm': '2106702402',
         'list_watchlist': data_watchlist
     }
-    return render(request, "mywatchlist.html", context)
+    
+    if (watched > unwatched):
+        return render(request, "mywatchlist_banyak.html", context)
+    else:
+        return render(request, "mywatchlist_sedikit.html", context)
+    # return render(request, "mywatchlist.html", context)
 
 def show_json(request):
     data = MyWatchList.objects.all()

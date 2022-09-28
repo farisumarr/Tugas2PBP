@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from todolist.models import Task
-from django.http import HttpResponse
-from django.core import serializers
 
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -20,17 +18,15 @@ from todolist.forms import CreateTaskForm
 
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    data_task = Task.objects.all()
+    data_task = Task.objects.filter(user=request.user)  #data difilter berdasarkan user yang login
     context = {
         'list_task': data_task,
-        # 'nama': 'Muhammad Faris Umar Rahman',
         'last_login': request.COOKIES['last_login'],
     }
     return render(request, "todolist.html", context)
 
 def register(request):
     form = UserCreationForm()
-
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -75,7 +71,6 @@ def create_task(request):
             new_form = form.save(commit=False)
             new_form.user = request.user
             new_form.save()
-            messages.success(request, 'Task telah berhasil dibuat!')
             return redirect('todolist:show_todolist')
 
     context = {'form': form}

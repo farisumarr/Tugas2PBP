@@ -62,6 +62,7 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+@login_required(login_url='/todolist/login/')
 def create_task(request):
     form = CreateTaskForm()
 

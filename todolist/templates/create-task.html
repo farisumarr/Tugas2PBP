@@ -7,23 +7,47 @@
 {% block content %}  
 
 <div class = "create_task">
-    
-    <h1>Create Task</h1>  
-
         <form method="POST" >  
             <div class="form-group">
-                
                 {% csrf_token %}  
-                <table class="table table-hover">  
-                    {{ form.as_table }}  
-                    <tr >  
-                        <td></td>
-                        <td><input type="submit" name="submit" value="Tambah Task"/></td>  
-                    </tr>  
-                </table>  
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card bg-dark text-white" style="border-radius: 2rem;">
+                                <div class="card-body p-5 text-center">
+                                        <div class="mb-md-1 mt-md-4 pb-5"></div>
+                                            <h3 class="fw-bold mb-2 text-uppercase">Create Task</h3>
+                                            {% for field in form %}
+                                            <tr>
+                                                <p></p>
+                                                <td>{{ field.label}}</td>
+                                                <p></p>
+                                                <td>{{ field }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            
+                                            <tr >  
+                                                <p></p>
+                                                <td><input class="btn btn-outline-light btn-lg px-5" type="submit" name="submit" value="Tambah Task"/></td>  
+                                            </tr>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
 
+
+
+
+
+
+
+
+
+        
     {% if messages %}  
         <ul>   
             {% for message in messages %}  

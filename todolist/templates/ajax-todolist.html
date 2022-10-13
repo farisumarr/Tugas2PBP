@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+
+<title>Create Task</title>
+
+<style>
+  .card:hover{
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+      opacity: 1.0;
+  }
+  .row{
+      margin-left: 75px;
+      margin-right: 75px;
+  }
+</style>
+
+{% endblock meta %}
+
+{% block content %}
+<nav class="navbar" style="background-color: #212529;">
+  <div class="container-fluid">
+    <span class="text-light bg-dark" class="navbar-brand mb-0 h1">Selamat datang, {{user}}!</span>
+    <div>
+      <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add task</button>
+      <a href="{% url 'todolist:logout' %}"><button class="btn btn-outline-light">Logout</button></a>
+    </div>
+  </div>
+</nav>
+
+<h1 class="my-4" style="text-align:center">To Do List</h1>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white" >
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Task</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form style="text-align:center" id="form" onsubmit="return false;">
+          <div class="form-group">
+            {% csrf_token %}  
+            <div class="mb-md-1 mt-md-1 pb-1"></div>
+            <h3 class="fw-bold mb-2 text-uppercase">Create Task</h3>
+            <div><label>Title</label></div>
+            <div><input type="text" name="title" required></input></div>
+            <div><label>Description</label></div>
+            <div><input type="text" name="description" required></input></div>            
+            <tr >  
+                <p></p>
+                <td><button class="btn btn-outline-light btn-lg px-5" id="button" type="submit"  value="Submit">Add Task</button></td>  
+            </tr>                            
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row" id="card-row">
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+async function getTodolist(){
+  return fetch("{% url 'todolist:show_json' %}").then((res) => res.json())
+}
+
+async function refreshTodolist() {
+  document.getElementById("card-row").innerHTML = ""
+  const wishlist = await getTodolist()
+  let htmlString = ``
+  wishlist.forEach((item) => {
+    htmlString += `\n<div class="col-3">
+      <div class="card text-white bg-dark mb-3" style="max-width: 22rem;" id="card-task">
+          <div class="card-header">${item.fields.date}</div>
+          <div class="card-body">
+              <h5 class="card-title">${item.fields.title}</h5>
+              <p class="card-text">${item.fields.deskripsi}</p>
+          </div>
+      </div>
+    </div>` 
+  })
+  document.getElementById("card-row").innerHTML = htmlString
+  }
+
+async function addTask() {
+  fetch("{% url 'todolist:add_task_ajax' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+    }).then(refreshTodolist)
+    
+  return false
+}
+
+document.getElementById("button").onclick = addTask
+refreshTodolist()
+
+</script>
+{% endblock content %}

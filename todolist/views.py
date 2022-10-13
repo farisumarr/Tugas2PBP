@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.shortcuts import render
 from todolist.models import Task
 
@@ -10,7 +11,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
+from django.core import serializers
 from django.urls import reverse
 
 from todolist.forms import CreateTaskForm
@@ -46,7 +48,7 @@ def login_user(request):
         if user is not None:
             login(request, user)  # melakukan login terlebih dahulu
             response = HttpResponseRedirect(
-                reverse("todolist:show_todolist"))  # membuat response
+                reverse("todolist:views_ajax"))  # membuat response
             # membuat cookie last_login dan menambahkannya ke dalam response
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
@@ -76,3 +78,25 @@ def create_task(request):
 
     context = {'form': form}
     return render(request, 'create-task.html', context)
+
+@login_required(login_url='/todolist/login/')
+def show_json(request):
+    data_todolist = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', data_todolist))
+
+@login_required(login_url='/todolist/login/')
+def add_task_ajax(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        deskripsi = request.POST.get("description")
+
+        new_todolist = Task(title=title, deskripsi=deskripsi, user=request.user)
+        new_todolist.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@login_required(login_url='/todolist/login/')
+def views_ajax(request):
+    return render(request, "ajax-todolist.html")
